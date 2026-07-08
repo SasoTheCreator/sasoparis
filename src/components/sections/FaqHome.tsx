@@ -1,3 +1,4 @@
+import Image from "next/image";
 import SectionHeading from "@/components/ui/SectionHeading";
 import FaqItem from "@/components/ui/FaqItem";
 import { sanityFetch } from "@/sanity/lib/live";
@@ -20,10 +21,12 @@ export default async function FaqHome() {
             sizeClassName="text-[clamp(2rem,12vw,14rem)]"
             className="mb-8"
           />
-          <img
+          <Image
             src="/pigeonquestion.png"
             alt=""
-            className="hidden md:block absolute right-[100px] bottom-0 z-10 w-48lg:w-88 h-auto"
+            width={377}
+            height={398}
+            className="hidden md:block absolute right-[100px] bottom-0 z-10 w-48 lg:w-88 h-auto"
           />
         </div>
         <div>

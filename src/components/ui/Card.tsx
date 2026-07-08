@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Tag from "./Tag";
+import TagGroup from "./TagGroup";
 
 interface CardProps {
   title: string;
@@ -19,10 +19,7 @@ export default function Card({
   return (
     <Link href={`/visites/${slug}`} className="block">
       <div className="flex flex-col border-t-1 border-dashed md:px-12 py-12 px-6">
-        <div className="flex flex-wrap pt-4">
-          <Tag text={duration} className="border-r-0" />
-          <Tag text={price} />
-        </div>
+        <TagGroup duration={duration} price={price} className="pt-4" />
         <h3 className="font-instrument-serif text-4xl lg:text-7xl text-orangebrand tracking-[-0.05em] mt-6">
           {title}
         </h3>

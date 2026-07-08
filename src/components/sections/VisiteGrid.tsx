@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
-import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import type { SanityImageSource } from "@sanity/image-url";
 
 interface VisiteGridProps {
   imageGrid?: SanityImageSource | null;
@@ -18,26 +18,31 @@ export default function VisiteGrid({ imageGrid }: VisiteGridProps) {
           </div>
 
           <div className="aspect-square overflow-hidden">
-            <img
+            <Image
               src="/bottle.png"
               alt=""
-
+              width={612}
+              height={612}
               className="w-full h-full object-cover"
             />
           </div>
 
           <div className="aspect-square overflow-hidden">
-            <img
+            <Image
               src="/girlcamera.png"
               alt=""
+              width={612}
+              height={612}
               className="w-full h-full object-cover"
             />
           </div>
 
           <div className="aspect-square overflow-hidden">
-            <img
+            <Image
               src="/shoes.png"
               alt=""
+              width={612}
+              height={612}
               className="w-full h-full object-cover"
             />
           </div>
@@ -54,9 +59,11 @@ export default function VisiteGrid({ imageGrid }: VisiteGridProps) {
           </div>
 
           <div className="aspect-square overflow-hidden">
-            <img
+            <Image
               src="/ticket.png"
               alt=""
+              width={612}
+              height={612}
               className="w-full h-full object-cover"
             />
           </div>

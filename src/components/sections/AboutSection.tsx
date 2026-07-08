@@ -1,3 +1,4 @@
+import Image from "next/image";
 import SectionHeading from "@/components/ui/SectionHeading";
 
 export default function AboutSection() {
@@ -16,9 +17,11 @@ export default function AboutSection() {
           </div>
 
           <div className="lg:w-1/3">
-            <img
+            <Image
               src="/saosred.png"
               alt="Saso"
+              width={269}
+              height={292}
               className="w-full h-auto lg:h-full lg:object-cover"
             />
           </div>

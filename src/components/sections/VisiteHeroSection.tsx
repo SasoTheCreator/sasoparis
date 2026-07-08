@@ -1,7 +1,7 @@
 import Image from "next/image";
-import Tag from "@/components/ui/Tag";
+import TagGroup from "@/components/ui/TagGroup";
 import { urlFor } from "@/sanity/lib/image";
-import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import type { SanityImageSource } from "@sanity/image-url";
 
 interface VisiteHeroSectionProps {
   title: string;
@@ -25,10 +25,7 @@ export default function VisiteHeroSection({
       <div className="px-6 md:px-12 py-16 grid md:grid-cols-2 gap-12 lg:gap-24 items-center">
         {/* Texte — gauche */}
         <div className="flex flex-col gap-6">
-          <div className="flex flex-wrap">
-            {duration && <Tag text={duration} className="border-r-0" />}
-            {price && <Tag text={price} />}
-          </div>
+          <TagGroup duration={duration} price={price} />
 
           <h1 className="font-instrument-serif text-4xl lg:text-7xl text-orangebrand tracking-[-0.05em]">
             {title}

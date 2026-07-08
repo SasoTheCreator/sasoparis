@@ -35,7 +35,9 @@ export async function generateStaticParams() {
   // Build-time only: no request context here, so use the plain client
   // instead of sanityFetch (which resolves draftMode() and needs one).
   const data = await client.fetch(ALL_SLUGS_QUERY);
-  return data.map((v: { slug: string }) => ({ slug: v.slug }));
+  return data
+    .filter((v): v is { slug: string } => v.slug !== null)
+    .map((v) => ({ slug: v.slug }));
 }
 
 export default async function VisiteDetailPage({
