@@ -1,0 +1,133 @@
+import { defineType, defineField, defineArrayMember } from "sanity";
+import { DocumentTextIcon } from "@sanity/icons";
+
+export const visite = defineType({
+  name: "visite",
+  title: "Visite",
+  type: "document",
+  icon: DocumentTextIcon,
+  fields: [
+    defineField({
+      name: "title",
+      title: "Titre",
+      type: "string",
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "slug",
+      title: "Slug",
+      type: "slug",
+      description: "Route de la page détail : /visites/[slug]",
+      options: {
+        source: "title",
+        maxLength: 96,
+      },
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "cover",
+      title: "Illustration",
+      type: "image",
+      options: { hotspot: true },
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "imageGrid",
+      title: "Image Grid",
+      type: "image",
+      description: "Image affichée dans la grille visuelle de la page détail.",
+      options: { hotspot: true },
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "Video",
+      title: "Vidéo / GIF de présentation",
+      type: "file",
+      description:
+        "GIF ou vidéo courte affichée sur la card et la page détail.",
+      options: {
+        accept: "video/*,image/gif",
+      },
+    }),
+    defineField({
+      name: "cardDescription",
+      title: "Description card",
+      type: "string",
+      description: "Visible sur la card homepage uniquement.",
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "longDescription",
+      title: "Description longue",
+      type: "text",
+      description: "Page détail —not les sauts de ligne sont préservés.",
+      rows: 6,
+    }),
+    defineField({
+      name: "duration",
+      title: "Durée",
+      type: "string",
+      description: "Ex : 2h, 2h30",
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "price",
+      title: "Prix",
+      type: "string",
+      description: "Ex : 45€/personne",
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "rating",
+      title: "Note",
+      type: "number",
+      description: "Note de 1 à 5 étoiles.",
+      validation: (rule) => rule.required().min(1).max(5).integer(),
+    }),
+    defineField({
+      name: "metroLines",
+      title: "Lignes de métro",
+      type: "array",
+      of: [defineArrayMember({ type: "string" })],
+      options: {
+        list: [
+          { title: "Ligne 1", value: "1" },
+          { title: "Ligne 2", value: "2" },
+          { title: "Ligne 3", value: "3" },
+          { title: "Ligne 3bis", value: "3bis" },
+          { title: "Ligne 4", value: "4" },
+          { title: "Ligne 5", value: "5" },
+          { title: "Ligne 6", value: "6" },
+          { title: "Ligne 7", value: "7" },
+          { title: "Ligne 7bis", value: "7bis" },
+          { title: "Ligne 8", value: "8" },
+          { title: "Ligne 9", value: "9" },
+          { title: "Ligne 10", value: "10" },
+          { title: "Ligne 11", value: "11" },
+          { title: "Ligne 12", value: "12" },
+          { title: "Ligne 13", value: "13" },
+          { title: "Ligne 14", value: "14" },
+          { title: "RER A", value: "A" },
+          { title: "RER B", value: "B" },
+          { title: "RER C", value: "C" },
+          { title: "RER D", value: "D" },
+          { title: "RER E", value: "E" },
+        ],
+      },
+    }),
+    defineField({
+      name: "bookingUrl",
+      title: "Lien de réservation",
+      type: "url",
+      description: "Lien externe — s'ouvre dans un nouvel onglet.",
+      validation: (rule) => rule.uri({ scheme: ["http", "https"] }),
+    }),
+  ],
+  preview: {
+    select: {
+      title: "title",
+      subtitle: "duration",
+      media: "cover",
+    },
+  },
+});
